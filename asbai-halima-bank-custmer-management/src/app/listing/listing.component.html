@@ -1,86 +1,39 @@
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg px-10 ">
-        <div class="flex aitems-center flex-wrap justify-around h-30 py-10 my-2 " >
-          <div class="flex justify-center w-2/5 h-40 bg-blue-100 py-5 px-2 text-gray-900 hover:text-white border border-blue-500 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-600 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-300 dark:focus:ring-blue-800 uppercase font-bold"><p class="text-center m-auto font-bold">the number of customers :<span class="font-extrabold p-2"> {{total}}</span></p></div>
-          <div class="flex justify-center w-2/5 h-40 bg-blue-100 py-5 px-2 text-gray-900 hover:text-white border border-blue-500 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-600 dark:text-blue-400 dark:hover:text-white dark:hover:bg-blue-300 dark:focus:ring-blue-800 uppercase font-bold"><p class="text-center m-auto font-bold">the total amount of money held in all customer accounts : <span class="font-extrabold p-2">{{amounts}} MAD </span></p></div>
-  </div>
-    <div class="flex items-cente gap-6 mb-6 ">
-        
-      <input
-      type="text"
-      class="border rounded-md shadow  p-3 px-10 m-2 ml-auto mr-auto w-1/2  bg-gray-100 focus:border-blue-300 focus:outline-none"
-      placeholder="Search by any element ..."
-      (input)="onQuery($event)"
-    />
-  </div>
+import React from "react";
 
-  
-  <table class="w-full text-sm text-left text-gray-600 dark:text-gray-400">
-    <thead
-      class="text-xs text-gray-700 uppercase w-full bg-blue-100 dark:bg-gray-700 dark:text-gray-400"
-    >
-      <tr>
-        <th scope="col" class="px-6 py-3">First Name</th>
-        <th scope="col" class="px-6 py-3">Last Name</th>
-        <th scope="col" class="px-6 py-3">Email</th>
-        <th scope="col" class="px-6 py-3">Gender</th>
-        <th scope="col" class="px-6 py-3">Address</th>
-        <th scope="col" class="px-6 py-3">
-          <span class="sr-only">Details</span>
-        </th>
-        <th scope="col" class="px-6 py-3">
-          <span class="sr-only">Edit</span>
-        </th>
-        <th scope="col" class="px-6 py-3">
-            <span class="sr-only">Delete</span>
-        </th>
-      </tr>
-    </thead>
-    <tbody >
-      
+const Item = ({ product, cb, checked, list, setList }) => {
+	const handleCheckBox = () => {
+		cb(product);
+	};
 
-      <tr *ngFor="let custmer of custmers"
-         
-         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+	const handleDelete = () => {
+		setList([
+			...list.filter(
+				(item) => item.name !== product.name
+			),
+		]);
+	};
 
-        <td>
-            {{ custmer?.firstName }}
-        </td>
-        <td class="px-6 py-4">
-            {{ custmer?.lastName }}
-        </td>
-        <td class="px-6 py-4">
-            {{ custmer?.email }}
-        </td>
-        <td class="px-6 py-4">
-            {{ custmer?.gender }}
-        </td>
-        <td class="px-6 py-4">
-            {{ custmer?.address }}
-        </td>
-        <td class="px-6 py-4 text-right">
-          <a
-          
-          class="font-medium text-green-500 dark:text-green-600 hover:underline"
-          routerLink="details/{{custmer.id}}"
-          >Details</a
-          >
-      </td>
-        <td class="px-6 py-4 text-right">
-            <a
-            class="font-medium text-blue-500 dark:text-blue-600 hover:underline"
-            routerLink="edit/{{custmer.id}}"
-            >Edit</a
-            >
-        </td>
-        <td class="px-6 py-4 text-right">
-            <a
-            (click)="delete(custmer)"  
-            class="font-medium text-red-500 dark:text-red-600 hover:underline"
-            >{{ getIsDeleteLoading(custmer)? 'Loading...' : 'Delete'}}</a
-            >
-        </td>
-        </tr>
-      
-    </tbody>
-  </table>
-</div>
+	return (
+		<div className="flex gap-2 py-4 items-center [&:not(:last-child)]:border-b border-gray-300">
+			<input
+				type="checkbox"
+				value={product.name}
+				className="w-4 h-4"
+				onChange={handleCheckBox}
+				checked={checked}
+			/>
+			<p className="font-semibold">{product.name}</p>
+			<p className="ml-auto font-semibold">
+				{product.price}$
+			</p>
+			<button
+				onClick={handleDelete}
+				className="border border-black font-semibold rounded-full w-5 h-5 flex items-center justify-center"
+			>
+				x
+			</button>
+		</div>
+	);
+};
+
+export default Item;
