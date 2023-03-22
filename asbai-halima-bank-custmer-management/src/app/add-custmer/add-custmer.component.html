@@ -1,0 +1,128 @@
+<div class="flex flex-col items-center p-10">
+
+    
+<form [formGroup]="custmerForm" (ngSubmit)="submit()" class="w-1/2 shadow-md p-10 rounded-lg hover: border-blue-300">
+    <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-6 group">
+            <input type="text" 
+            formControlName="firstName"
+            name="first_name" 
+            id="first_name" 
+            class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" 
+             />
+            <label for="first_name" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+            <small class="text-red-500" *ngIf="getControl('firstName')?.hasError('required') && getControl('firstName')?.touched">
+                First Name is required!
+             </small>
+            <small class="text-red-500" *ngIf="getControl('firstName')?.hasError('pattern') && getControl('firstName')?.touched">
+               First Name should be greate than 4 haracters and less than 50 haracters!
+            </small>
+        </div>
+        
+        <div class="relative z-0 w-full mb-6 group">
+            <input formControlName="lastName" type="text" name="last_name" id="last_name" class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  />
+            <label for="last_name" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last name</label>
+            <small class="text-red-500" *ngIf="getControl('lastName')?.hasError('required') && getControl('lastName')?.touched">
+                Last Name is required!
+             </small>
+            <small class="text-red-500" *ngIf="getControl('lastName')?.hasError('pattern') && getControl('lastName')?.touched">
+               First Name should be greate than 4 characters and less than 50 characters!
+            </small>
+       
+        </div>
+        
+    </div>
+    <div class="grid md:grid-cols-2 md:gap-6">
+        <div class="relative z-0 w-full mb-6 group">
+            <label for="underline_select" class="sr-only">Underline select</label>
+            <select formControlName="gender" id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="">Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <small class="text-red-500" *ngIf="getControl('gender')?.hasError('required') && getControl('gender')?.touched">
+                 Gender is required!
+             </small>
+        </div>
+        
+        <div class="relative z-0 w-full mb-6 group">
+            <label for="underline_select" class="sr-only">Underline select</label>
+            <select formControlName="type" id="underline_select" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+                <option value="">Choose type of account</option>
+                <option value="savings">Savings</option>
+                <option value="chacking">Checking</option>
+            </select>
+            <small class="text-red-500" *ngIf="getControl('type')?.hasError('required') && getControl('type')?.touched">
+                Type is required!
+             </small>
+        </div>
+
+
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+        <input formControlName="phone" type="tel"  name="phone" id="phone" class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  />
+        <label for="phone" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Phone number (+212) 6.....</label>
+        <small class="text-red-500" *ngIf="getControl('phone')?.hasError('required') && getControl('phone')?.touched">
+            Phone Number is required!
+         </small>
+        <small class="text-red-500" *ngIf="getControl('phone')?.hasError('pattern') && getControl('phone')?.touched">
+           Phone Number invalid!
+        </small>
+       
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+        <input formControlName="email" type="email" name="email" id="email" class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"/>
+        <label for="email" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+        
+        <small class="text-red-500" *ngIf="getControl('email')?.hasError('required') && getControl('email')?.touched">
+            Email Address is required!
+         </small>
+
+    </div>
+    <div class="relative z-0 w-full mb-6 group">
+        <input formControlName="address" type="text" name="address" id="address" class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  />
+        <label for="address" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Address</label>
+        <small class="text-red-500" *ngIf="getControl('address')?.hasError('required') && getControl('address')?.touched">
+            Address is required!
+         </small>
+        <small class="text-red-500" *ngIf="getControl('address')?.hasError('pattern') && getControl('address')?.touched">
+            Address should be greate than 4 characters and less than 300 characters!
+        </small>
+    </div>
+    <div class="grid md:grid-cols-1 md:gap-6">
+        <!-- <div class="relative z-0 w-full mb-6 group">
+            <input formControlName="accountNumber" type="number" name="accountNumber" id="accountNumber" class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  />
+            <label for="accountNumber" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Account Number</label>
+            
+            <small class="text-red-500" *ngIf="getControl('accountNumber')?.hasError('required') && getControl('accountNumber')?.touched">
+                Account Number is required!
+             </small>
+            <small class="text-red-500" *ngIf="getControl('accountNumber')?.hasError('pattern') && getControl('accountNumber')?.touched">
+               Account Number invalid!
+            </small>
+
+        </div> -->
+        <div class="relative z-0 w-full mb-6 group">
+            <input formControlName="amount" type="number" name="amount" id="amount" class="block py-2.5 px-0 w-full text-xl text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"  />
+            <label for="amount" class="peer-focus:font-medium absolute text-xl text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Amount</label>
+            <small class="text-red-500" *ngIf="getControl('amount')?.hasError('required') && getControl('amount')?.touched">
+                Amount is required!
+             </small>
+            
+            <small class="text-red-500" *ngIf="getControl('amount')?.hasError('min') && getControl('amount')?.touched">
+                Amount should be greate than 100MAD!
+             </small>
+        </div>
+        
+    </div>
+   
+    <div class="flex justify-center">
+         <button type="submit" 
+            class="border border-blue-400 rounded-md shadow p-2 bg-blue-400 hover:bg-blue-500 text-blue-900 w-1/2  disabled:opacity-50"
+            [disabled]="isLoading || !canSubmit()"
+            >{{isLoading ? 'Adding...': 'Add Custmer'}}</button>
+    </div>
+  </form>
+  
+
+</div>

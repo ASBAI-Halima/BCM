@@ -1,0 +1,21 @@
+
+<h1 class="w-40 rounded-full mx-auto text-blue-300 font-bold">Customer's Details</h1>
+<div class="flex flex-col items-center justify-center p-10">
+    <div *ngIf="customer " class="relative flex flex-col text-center shadow rounded-lg justify-center gap-6 py-5 shadow w-1/2"> 
+        <div class="flex flex-col items-center">
+            <img src="../../assets/user.webp" class="w-52 h-52 object-cover rounded-full shadow-lg m-6">
+            <h3 class="text-2xl font-base mt-6 text-gray-900 uppercase">{{ customer.lastName}} {{ customer.firstName }}</h3>
+          </div>
+          <div class="flex flex-col items-start ">
+            <p class="text-lg font-sm mb-4 w-full"><span class="text-blue-300">Email:</span> {{ customer.email }}</p>
+            <p class="text-lg font-sm mb-4 w-full"><span class="text-blue-300">Phone Number:</span> {{ customer.phone }}</p>
+            <p class="text-lg font-sm mb-4 w-full"><span class="text-blue-300">Address:</span> {{ customer.address }}</p>
+            <p class="text-lg font-sm mb-4 w-full"><span class="text-blue-300">Gender:</span> {{ customer.gender }}</p>
+            <p class="text-lg font-sm mb-4 w-full"><span class="text-blue-300">Type of account:</span> {{ customer.type }}</p>
+            <p class="text-lg font-sm mb-4 w-full"><span class="text-blue-300">Account Number:</span> {{ customer.accountNumber }}</p>
+          </div>
+     
+     </div>
+     
+     
+</div>
